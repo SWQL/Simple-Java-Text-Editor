@@ -9,28 +9,34 @@ public class HighlightText extends DefaultHighlighter.DefaultHighlightPainter{
         super(color);
     }
 
-    public void highLight(JTextComponent textComp, String[] pattern) {
-        removeHighlights(textComp);
+    public void highLight(JTextComponent textComp, String[] patterns) {
+        removeHighlights(textComp.getHighlighter());
 
-        try {
-            Highlighter hilite = textComp.getHighlighter();
-            Document doc = textComp.getDocument();
-            String text = doc.getText(0, doc.getLength());
-            for (int i = 0; i < pattern.length; i++) {
-                int pos = 0;
-
-                while ((pos = text.indexOf(pattern[i], pos)) >= 0) {
-                    hilite.addHighlight(pos, pos + pattern[i].length(), this);
-                    pos += pattern[i].length();
-                }
-            }
-        } catch (BadLocationException e) {}
-
+        addHighlights(textComp, patterns);
     }
 
-    public void removeHighlights(JTextComponent textComp) {
+	private void addHighlights(JTextComponent textComp, String[] patterns) {
+		try {
+            Highlighter highlighter = textComp.getHighlighter();
+            Document doc = textComp.getDocument();
+            String text = doc.getText(0, doc.getLength());
+            for (int i = 0; i < patterns.length; i++) {
+                searchAndHighlight(highlighter, patterns[i], text);
+            }
+        } catch (BadLocationException e) {}
+	}
 
-        Highlighter hilite = textComp.getHighlighter();
+	private void searchAndHighlight(Highlighter highlighter, String pattern,  String text)
+			throws BadLocationException {
+		int pos = 0;
+		while ((pos = text.indexOf(pattern, pos)) >= 0) {
+		    highlighter.addHighlight(pos, pos + pattern.length(), this);
+		    pos += pattern.length();
+		}
+	}
+
+    public void removeHighlights(Highlighter hilite) {
+
         Highlighter.Highlight[] hilites = hilite.getHighlights();
 
         for (int i = 0; i < hilites.length; i++) {
