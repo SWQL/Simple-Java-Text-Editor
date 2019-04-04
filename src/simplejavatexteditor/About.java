@@ -58,7 +58,7 @@ public class About {
     }
 
     public void me() {
-        frame.setTitle("About Me - " + SimpleJavaTextEditor.NAME);
+        frame.setTitle("About Me - " + SimpleJavaTextEditor.APPLICATION_NAME);
 
         contentText =
         "<html><body><p>" +
@@ -76,11 +76,11 @@ public class About {
     }
 
     public void software() {
-        frame.setTitle("About Me - " + SimpleJavaTextEditor.NAME);
+        frame.setTitle("About Me - " + SimpleJavaTextEditor.APPLICATION_NAME);
 
         contentText =
         "<html><body><p>" +
-        "Name: " + SimpleJavaTextEditor.NAME + "<br />" +
+        "Name: " + SimpleJavaTextEditor.APPLICATION_NAME + "<br />" +
         "Version: " + SimpleJavaTextEditor.VERSION +
         "</p></body></html>";
 

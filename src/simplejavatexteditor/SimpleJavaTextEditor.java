@@ -22,17 +22,15 @@ import javax.swing.JTextPane;
 
 public class SimpleJavaTextEditor extends JTextPane {
 
-    private static final long serialVersionUID = 1L;
-    public final static String AUTHOR_EMAIL = "hi@ph7.me";
-    public final static String NAME = "PHNotePad";
-        public final static String EDITOR_EMAIL = "contact@achinthagunasekara.com";
-    public final static double VERSION = 3.0;
+	public static final String AUTHOR_EMAIL = "hi@ph7.me";
+	public static final String APPLICATION_NAME = "PHNotePad";
+	public static final String EDITOR_EMAIL = "contact@achinthagunasekara.com";
+	public static final double VERSION = 3.0;
+	
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
-        new UI().setVisible(true);
-    }
+	public static void main(String[] args) {
+		new UI().setVisible(true);
+	}
 
 }

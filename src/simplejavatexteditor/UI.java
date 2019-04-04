@@ -113,7 +113,7 @@ public class UI extends JFrame implements ActionListener {
         setSize(800, 500);
 
         // Set the title of the window
-        setTitle("Untitled | " + SimpleJavaTextEditor.NAME);
+        setTitle("Untitled | " + SimpleJavaTextEditor.APPLICATION_NAME);
 
         // Set the default close operation (exit when it gets closed)
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -507,7 +507,7 @@ public class UI extends JFrame implements ActionListener {
                 FEdit.clear(textArea); // clear the TextArea before applying the file contents
                 try {
                     File openFile = open.getSelectedFile();
-                    setTitle(openFile.getName() + " | " + SimpleJavaTextEditor.NAME);
+                    setTitle(openFile.getName() + " | " + SimpleJavaTextEditor.APPLICATION_NAME);
                     Scanner scan = new Scanner(new FileReader(openFile.getPath()));
                     while (scan.hasNext()) {
                         textArea.append(scan.nextLine() + "\n");
@@ -590,7 +590,7 @@ public class UI extends JFrame implements ActionListener {
         if (option == JFileChooser.APPROVE_OPTION) {
             try {
                 File openFile = fileChoose.getSelectedFile();
-                setTitle(openFile.getName() + " | " + SimpleJavaTextEditor.NAME);
+                setTitle(openFile.getName() + " | " + SimpleJavaTextEditor.APPLICATION_NAME);
 
                 BufferedWriter out = new BufferedWriter(new FileWriter(openFile.getPath()));
                 out.write(textArea.getText());
